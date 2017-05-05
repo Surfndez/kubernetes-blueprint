@@ -11,7 +11,7 @@ tosca_definitions_version: cloudify_dsl_1_2
 
 imports:
   - http://www.getcloudify.org/spec/cloudify/3.3m5/types.yaml
-  - http://raw.githubusercontent.com/mistio/cloudify-mist-plugin/master/plugin.yaml
+  - http://raw.githubusercontent.com/mistio/cloudify-mist-plugin/tagging/plugin.yaml
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Inputs section
@@ -60,6 +60,10 @@ inputs:
     description: The ID of the SSH key to be deployed on the Kubernetes Worker
     type: string
     default: ''
+  mist_tags:
+    description:   # TODO
+    default:
+      test1: tag
   ssh_user:
     description: The SSH user. If left blank, Mist.io will try to auto-discover
     type: string
@@ -204,6 +208,7 @@ node_templates:
         location_id: { get_input: mist_location_1 }
         networks: { get_input: networks }
         key: { get_input: mist_key_master }
+        tags: { get_input: mist_tags }
       mist_config:
         mist_token: { get_input: mist_token }
         mist_username: { get_input: mist_username }
@@ -225,6 +230,7 @@ node_templates:
         location_id: { get_input: mist_location_1 }
         networks: { get_input: networks }
         key: { get_input: mist_key_worker }
+        tags: { get_input: mist_tags }
       mist_config:
         mist_token: { get_input: mist_token }
         mist_username: { get_input: mist_username }
