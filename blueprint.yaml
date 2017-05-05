@@ -62,7 +62,7 @@ inputs:
     default: ''
   mist_tags:
     description:   # TODO
-    default: {"test1": "asd"}
+    default: {}
   ssh_user:
     description: The SSH user. If left blank, Mist.io will try to auto-discover
     type: string
@@ -229,7 +229,9 @@ node_templates:
         location_id: { get_input: mist_location_1 }
         networks: { get_input: networks }
         key: { get_input: mist_key_worker }
-        tags: { get_input: mist_tags }
+#        tags: { get_input: mist_tags }
+        tags:
+          test1: tag1
       mist_config:
         mist_token: { get_input: mist_token }
         mist_username: { get_input: mist_username }
