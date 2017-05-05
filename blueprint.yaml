@@ -230,8 +230,7 @@ node_templates:
         networks: { get_input: networks }
         key: { get_input: mist_key_worker }
 #        tags: { get_input: mist_tags }
-        tags:
-          test1: tag1
+        tags: {"asd": "asd"}
       mist_config:
         mist_token: { get_input: mist_token }
         mist_username: { get_input: mist_username }
