@@ -229,8 +229,7 @@ node_templates:
         location_id: { get_input: mist_location_1 }
         networks: { get_input: networks }
         key: { get_input: mist_key_worker }
-#        tags: { get_input: mist_tags }
-        tags: {"asd": "asd"}
+        tags: { get_input: mist_tags }
       mist_config:
         mist_token: { get_input: mist_token }
         mist_username: { get_input: mist_username }
