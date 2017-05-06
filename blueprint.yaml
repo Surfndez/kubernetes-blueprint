@@ -61,7 +61,7 @@ inputs:
     type: string
     default: ''
   mist_tags:
-    description:   # TODO
+    description: A dummy description # TODO
     default: {}
   ssh_user:
     description: The SSH user. If left blank, Mist.io will try to auto-discover
