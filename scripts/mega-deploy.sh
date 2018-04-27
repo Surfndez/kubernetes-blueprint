@@ -1203,13 +1203,20 @@ echo "$AUTH_PASSWORD,$AUTH_USERNAME,1" > /etc/kubernetes/auth/basicauth.csv
 cat <<EOF > /etc/kubernetes/admin.yaml
 apiVersion: kubeadm.k8s.io/v1alpha1
 kind: MasterConfiguration
+
+api:
+  bindPort: 443
+
 etcd:
   extraArgs:
-    'listen-peer-urls': 'http://127.0.0.1:2380'  # 0.0.0.0:2380
+    'listen-peer-urls': 'http://127.0.0.1:2380'
+
+token: $TOKEN
 EOF
 
 # Initialize kubeadm
-kubeadm init --config /etc/kubernetes/admin.yaml --token "$TOKEN" --apiserver-bind-port 443
+#kubeadm init --token "$TOKEN" --apiserver-bind-port 443
+kubeadm init --config /etc/kubernetes/admin.yaml
 sysctl net.bridge.bridge-nf-call-iptables=1
 
 # Wait for kube-apiserver to be up and running
